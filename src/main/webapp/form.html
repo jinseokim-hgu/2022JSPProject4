@@ -1,15 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <title>Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        select option[value=""][disabled] {
+            display: none;
+        }
+
+        input[type=text] {
+            width: 130px;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            resize: none;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+    </style>
 </head>
 <body>
-<h1>Form</h1>
-<form action="form_ok.jsp" method="post">
-  Title : <input type="text" name="title"> <br>
-  Contents : <input type="text" name="contents"> <br>
-  <input type="submit">
-</form>
+<div class="container">
+    <h1>도서 추가</h1>
+    <form action="form_ok.jsp" method="post" id="bookForm" name="form">
+        <div class="col-25">
+            <label for="title">제목:</label>
+        </div>
+        <div class="col-75">
+            <input type="text" id="title" name="title" placeholder="제목을 입력" autofocus><br>
+        </div>
+
+        <div class="col-25">
+            <label for="author">저자:</label>
+        </div>
+        <div class="col-75">
+            <input type="text" id="author" name="author"><br>
+        </div>
+
+        <div class="col-25">
+            <label for="publisher">출판사:</label>
+        </div>
+        <div class="col-75">
+            <input type="text" id="publisher" name="publisher"><br>
+        </div>
+
+        <div class="col-25">
+            <label for="publishDate">출간일:</label>
+        </div>
+        <div class="col-75">
+            <input type="date" id="publishDate" name="publishDate"><br>
+        </div>
+
+        <div class="col-25">
+            <label for="category">종류:</label>
+        </div>
+        <div class="col-75">
+            <select id="category" name="category" form="bookForm">
+                <option value="" disabled selected>종류 선택</option>
+                <option value="Self-improvement">자기계발</option>
+                <option value="Poem/Essay">시/에세이</option>
+                <option value="Humanity">인문</option>
+                <option value="Novel">소설</option>
+                <option value="History">역사</option>
+            </select><br>
+        </div>
+
+        <div class="col-25">
+            <label for="stars">별점:</label>
+        </div>
+        <div class="col-75">
+            <label><input type="radio" id="stars" name="stars" value="5" checked>*****</label>
+            <label><input type="radio" name="stars" value="4">****</label>
+            <label><input type="radio" name="stars" value="3">***</label>
+            <label><input type="radio" name="stars" value="2">**</label>
+            <label><input type="radio" name="stars" value="1">*</label><br>
+        </div>
+
+        <div class="col-25">
+            <label for="pages">페이지 수:</label>
+        </div>
+        <div class="col-75">
+            <input type="number" id="pages" name="pages"><br>
+        </div>
+
+        <div class="col-25">
+            <label for="weight">무게 (g):</label>
+        </div>
+        <div class="col-75">
+            <input type="number" id="weight" name="weight"><br>
+        </div>
+
+        <div class="col-25">
+            <label for="type">판매처:</label>
+        </div>
+        <div class="col-75">
+            <label><input type="checkbox" id="type" name="type1" value="Paper" checked>도서</label>
+            <label><input type="checkbox" name="type2" value="E-book" checked>e북</label><br>
+        </div>
+
+        <div class="col-25">
+            <label for="price">가격 (원):</label>
+        </div>
+        <div class="col-75">
+            <input type="text" id="price" name="price"><br>
+        </div>
+
+        <div class="col-25">
+            <label for="story">책 소개:</label>
+        </div>
+        <div class="col-75">
+            <textarea id="story" name="story" cols="40" rows="5"></textarea><br>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 </body>
 </html>
